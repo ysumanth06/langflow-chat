@@ -15,22 +15,45 @@
         .chat-container {
             width: 100%;
             height: 100%;
+            position: relative;
         }
         langflow-chat {
             display: block;
             width: 100%;
             height: 100%;
         }
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Arial, sans-serif;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/gh/logspace-ai/langflow-embedded-chat@v1.0.4/dist/build/static/js/bundle.min.js"></script>
 </head>
 <body>
     <div class="chat-container">
+        <div class="loading">Loading chat widget...</div>
         <langflow-chat
             window_title="Document Analyzer"
             flow_id="26eda8aa-e1ff-49c0-8211-66cff9127e27"
             host_url="https://api.langflow.astra.datastax.com/lf/63ba6898-079d-4e7a-9525-8f6870e516ee"
-        ></langflow-chat>
+            token="AstraCS:zJSHScdzjfzLFDIyedZTbLxD:0b84dd51d4ac6444fdaabc0f7d55c0b7757fdbafd12535cd0b34cbf0ca38b1aa"
+        />
     </div>
+
+    <script>
+        // Add this to check if the component is loading
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded');
+            const chat = document.querySelector('langflow-chat');
+            if (chat) {
+                console.log('Chat component found');
+            } else {
+                console.log('Chat component not found');
+            }
+        });
+    </script>
 </body>
 </html>
